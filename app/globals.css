@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ===== TAILWIND V4 THEME ===== */
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+
+  --color-primary: #87CEEB;
+  --color-primary-container: #b0e2f5;
+  --color-on-primary: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-container: #ffffff;
+  --color-surface-container-low: #ffffff;
+  --color-surface-container-lowest: #f8f8f8;
+  --color-surface-dim: #ffffff;
+  --color-surface-container-highest: #ffffff;
+  --color-on-surface: #1c1c1a;
+  --color-on-surface-variant: #424654;
+  --color-secondary: #6b7280;
+  --color-secondary-container: #fdd001;
+  --color-tertiary: #91004e;
+
+  --color-brand: #0041a7;
+  --color-brand-light: #0057d9;
+
+  --color-brand-primary: #0ea5e9;
+  --color-brand-secondary: #0284c7;
+
+  --tracking-tightest: -0.04em;
+}
+
+/* ===== BASE STYLES ===== */
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-headline tracking-tightest;
+  }
+}
+
+/* ===== UTILITIES ===== */
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .glass-card {
+    @apply bg-surface/70 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300;
+  }
+}
+
+/* ===== CLOUD DRIFT ANIMATION ===== */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(40px, -20px); }
+}
+
+/* ===== BASE RESETS ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

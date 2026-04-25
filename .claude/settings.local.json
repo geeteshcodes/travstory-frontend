@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 \"c:/Users/KIIT0001/Desktop/travstoryy/write_page.py\")",
+      "Bash(python \"c:/Users/KIIT0001/Desktop/travstoryy/write_page.py\")",
+      "Bash(del \"c:/Users/KIIT0001/Desktop/travstoryy/write_page.py\")",
+      "WebFetch(domain:www.pexels.com)"
+    ]
+  }
+}

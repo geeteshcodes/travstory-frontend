@@ -242,9 +242,17 @@ export default function ItineraryPage({ params }: { params: Promise<{ id: string
     chatRef.current?.sendPrompt(prompt);
   };
 
+  // Reset state synchronously when the trip id changes (adjust-state-during-render).
+  const [prevId, setPrevId] = useState(id);
+  if (id !== prevId) {
+    setPrevId(id);
+    setLoading(true);
+    setTrip(null);
+    setError(null);
+  }
+
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     getTrip(id)
       .then((t) => { if (!cancelled) setTrip(t); })
       .catch((err: unknown) => {

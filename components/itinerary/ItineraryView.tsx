@@ -64,11 +64,14 @@ export default function ItineraryView({
 
   const activeDay = days.find((d) => d.id === activeDayId) ?? days[0];
 
-  // Reset any focused place whenever the user switches day
-  useEffect(() => {
+  // Reset any focused place whenever the user switches day.
+  // Adjust-state-during-render pattern (React docs) — avoids an effect.
+  const [prevDayId, setPrevDayId] = useState(activeDayId);
+  if (activeDayId !== prevDayId) {
+    setPrevDayId(activeDayId);
     setPendingPlace(null);
     setActivePlace(null);
-  }, [activeDayId]);
+  }
 
   const daySelectorOptions: DayOption[] = days.map((d) => ({
     id: d.id,

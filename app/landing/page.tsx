@@ -96,7 +96,7 @@ export default function LandingPage() {
     <span>Start planning</span>
     <span className="text-white/80 font-normal">—</span>
     <span className="bg-white/20 px-2 py-0.5 rounded-full text-sm">
-      it's free
+      it&apos;s free
     </span>
     {/* Arrow icon */}
     <svg

@@ -14,18 +14,14 @@ function makeSessionId() {
 }
 
 function ChatPageInner() {
+  const searchParams = useSearchParams();
+  // Prefill from `?q=` once at construction — don't clobber later edits.
   const [sessionId] = useState(makeSessionId);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(() => searchParams.get("q") ?? "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const q = searchParams.get("q");
-    if (q) setInput(q);
-  }, [searchParams]);
 
   useEffect(() => {
     if (scrollRef.current) {

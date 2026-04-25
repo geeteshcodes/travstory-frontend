@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";  // ✅ Fixed import
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { sendChatMessage } from "@/lib/api";
 
@@ -13,7 +13,7 @@ function makeSessionId() {
   return `session-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
-export default function ChatPage() {
+function ChatPageInner() {
   const [sessionId] = useState(makeSessionId);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -373,5 +373,18 @@ export default function ChatPage() {
         </main>
       </div>
     </>
+  );
+}
+export default function ChatPage() {
+  return (
+    <Suspense
+      fallback={
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: "#475569" }}>
+          Loading chat…
+        </div>
+      }
+    >
+      <ChatPageInner />
+    </Suspense>
   );
 }
